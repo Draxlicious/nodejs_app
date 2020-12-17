@@ -1,7 +1,10 @@
 const express = require("express")
 const app = express()
-var path = require('path');
+const path = require('path');
+const morgan = require('morgan')
+
 const port = process.env.PORT || 3000
+app.use(morgan('dev'))
 
 // peg på directory views skal læses
 app.set('views', path.join(__dirname, 'server/views'));
@@ -11,8 +14,9 @@ app.set('view engine', 'ejs');
 app.use(express.static('./public'));
 
 
-// importer externe filer
-require('./server/routes/routes.js')(app);
+// importer externe filer fra routes
+// require('./server/routes/routes.js')(app);
+app.use('/', require('./server/routes/routes'))
 
 
 app.listen(port, (err)=>{
