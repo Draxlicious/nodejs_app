@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
 var path = require('path');
-const port = 3000
+const port = process.env.PORT || 3000
 
 // peg på directory views skal læses
 app.set('views', path.join(__dirname, 'server/views'));
