@@ -8,5 +8,17 @@
 </head>
 <body>
     We are into the EJS now push to heroku
+
+    <% userData.forEach((customer)=>{ %>
+
+
+    <table>
+        <tr>
+            <td><%= customer.customer_name %></td>
+            <td><%= customer.customer_lastname %></td>
+            <td><%= customer.customer_age %></td>
+        </tr>
+        <% })%>
+    </table>
 </body>
 </html>
