@@ -7,29 +7,6 @@ const mysql = require("mysql")
 const port = process.env.PORT || 3000
 app.use(morgan('dev'))
 
-const db = mysql.createConnection({
-    host: "127.0.0.1",
-    user: "root",
-    password: "",
-    database: "customers"
-})
-
-db.connect((err)=>{
-    if (err) throw err
-    console.log("DB Connected");
-})
-
-app.get('/', (req, res) =>{
-
-    db.query(`SELECT * FROM customers`, function(err, result, fields){
-        if(err) throw err
-        console.log(result);
-        res.render('index',{ title: 'Customer List', userData: result})
-    })
-})
-
-
-
 // peg på directory views skal læses
 app.set('views', path.join(__dirname, 'server/views'));
 // vælg html format der skal vises
