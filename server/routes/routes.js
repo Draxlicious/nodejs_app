@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const mysql = require("mysql")
-const db = require('../../app')
+// const mysql = require("mysql")
+// const mysql = require('../config/mysql')
+
 
 // router.get('/', (req, res) =>{
 

@@ -14,6 +14,11 @@ const db = mysql.createConnection({
     database: "customers"
 })
 
+db.connect((err)=>{
+    if (err) throw err
+    console.log("DB Connected");
+})
+
 app.get('/', (req, res) =>{
 
     db.query(`SELECT * FROM customers`, function(err, result, fields){
@@ -23,10 +28,6 @@ app.get('/', (req, res) =>{
     })
 })
 
-db.connect((err)=>{
-    if (err) throw err
-    console.log("DB Connected");
-})
 
 
 // peg på directory views skal læses
@@ -40,6 +41,7 @@ app.use(express.static('./public'));
 // importer externe filer fra routes
 // require('./server/routes/routes.js')(app);
 app.use('/', require('./server/routes/routes'))
+
 
 
 app.listen(port, (err)=>{
